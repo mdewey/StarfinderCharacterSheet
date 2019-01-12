@@ -1,0 +1,14 @@
+{
+  "name": "StarfinderSheets",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/klyoungblood/StarfinderSheets.git",
+  "author": "Mark Dewey <mark.t.dewey@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.23.6"
+  },
+  "scripts": {
+    "start": "browser-sync start --server \"public\" --files \"public\""
+  }
+}
