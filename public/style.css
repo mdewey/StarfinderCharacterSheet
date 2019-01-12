@@ -1,185 +1,191 @@
 input[type=checkbox] {
-margin: 1px;
+  margin: 1px;
 }
 
 button {
-border-radius: 1em;
+  border-radius: 1em;
 }
 
 .bigbutton {
-font-size: 120%;
+  font-size: 120%;
 }
 
 @media print {
-.nonprinting {
-visibility: hidden;
-display: none;
-}
+  .nonprinting {
+    visibility: hidden;
+    display: none;
+  }
 }
 
 @media screen {
-.printonly {
-visibility: hidden;
-display: none;
-}
-}	
-
-.invisible{
-display: none;
+  .printonly {
+    visibility: hidden;
+    display: none;
+  }
 }
 
-.fixedcontrols{
-position: fixed;
-top: 0;
-left: 0;
-background-color: white;
-border: 1px solid;
+.invisible {
+  display: none;
 }
 
-.breaking{
-break-before: page;
+.fixedcontrols {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: lightblue;
+  border: 1px solid;
+  height: 3em;
+  border:1px pink solid;
+  width: 100%;
 }
 
-.top-aligned{
-vertical-align: top;
+.breaking {
+  break-before: page;
 }
 
-.bottom-aligned{
-vertical-align: bottom;
+.top-aligned {
+  vertical-align: top;
 }
 
-.input_u{
-border: none;
-border-bottom: 1px solid;
-text-align: left;
-font-weight: bold;
-width: 100%;
+.bottom-aligned {
+  vertical-align: bottom;
 }
 
-.input_u3{
-border: none;
-border-bottom: 1px solid;
-text-align: left;
-width: 2em;
-font-family: sans-serif;
-font-variant: small-caps;
+.input_u {
+  border: none;
+  border-bottom: 1px solid;
+  text-align: left;
+  font-weight: bold;
+  width: 100%;
 }
 
-.input_uc{
-border: none;
-border-bottom: 1px solid;
-text-align: center;
-font-weight: bold;
-width: 100%;
+.input_u3 {
+  border: none;
+  border-bottom: 1px solid;
+  text-align: left;
+  width: 2em;
+  font-family: sans-serif;
+  font-variant: small-caps;
 }
 
-.input_ubig{
-font-size: 1.2em;
-border: none;
-border-bottom: 1px solid;
-text-align: center;
-width: 100%;
+.input_uc {
+  border: none;
+  border-bottom: 1px solid;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
 }
 
-.input_b{
-border: 1px solid;
-border-radius: 0.5em;
-text-align: center;
-font-weight: bold;
-width: 100%;
+.input_ubig {
+  font-size: 1.2em;
+  border: none;
+  border-bottom: 1px solid;
+  text-align: center;
+  width: 100%;
+}
+
+.input_b {
+  border: 1px solid;
+  border-radius: 0.5em;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
 }
 
 .bordered {
-border: 2px solid;
-border-radius: 0.5em;
+  border: 2px solid;
+  border-radius: 0.5em;
 }
 
-.thinbordered{
-border: 1px solid;
-border-radius: 0.5em;
+.thinbordered {
+  border: 1px solid;
+  border-radius: 0.5em;
 }
 
 .halfwidth {
-width: 48%;
+  width: 48%;
 }
 
 .twentyfive {
-width: 25%;
+  width: 25%;
 }
 
 textarea {
-resize: none;
-width: 98%;
-overflow: auto;
-font-family: sans-serif;
-border: 1px solid;
-border-radius: 0.5em;
+  resize: none;
+  width: 98%;
+  overflow: auto;
+  font-family: sans-serif;
+  border: 1px solid;
+  border-radius: 0.5em;
 }
 
 .fullwidth {
-width: 100%;
+  width: 100%;
 }
 
 .onethirdwidth {
-width: 33%;
+  width: 33%;
 }
 
 body {
-font-family: sans-serif;
-font-variant: small-caps;
+  font-family: sans-serif;
+  font-variant: small-caps;
 }
 
 .right-aligned {
-text-align: right;
+  text-align: right;
 }
 
 th {
-vertical-align: bottom;
-font-variant: small-caps;
+  vertical-align: bottom;
+  font-variant: small-caps;
 }
 
 td {
-font-variant: small-caps;
-white-space: nowrap;
+  font-variant: small-caps;
+  white-space: nowrap;
 }
 
 .wrap {
-white-space: normal;
+  white-space: normal;
 }
 
 .nobreak {
-white-space: nowrap;
-display: inline-block;
+  white-space: nowrap;
+  display: inline-block;
 }
 
 h3 {
-font-size: 1.2em;
-display: inline-block;
-padding: 0.1em;
-font-variant: small-caps;
-margin-top: 0em;
-margin-bottom: 0em;
+  font-size: 1.2em;
+  display: inline-block;
+  padding: 0.1em;
+  font-variant: small-caps;
+  margin-top: 0em;
+  margin-bottom: 0em;
 }
 
 h4 {
-font-family: monospace;
-font-size: 1.2em;
-margin-top: 0em;
-margin-bottom: 0em;
-margin-left: 0;
-margin-right: 0;
-font-weight: bold;
-display: inline-block;
-padding: 0.075em;
-font-variant: small-caps;
+  font-family: monospace;
+  font-size: 1.2em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.075em;
+  font-variant: small-caps;
 }
 
 h6 {
-margin-top: 0em;
-margin-bottom: 0em;
-margin-left: 0;
-margin-right: 0;
-font-weight: normal;
-font-variant: small-caps;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: normal;
+  font-variant: small-caps;
 }
 
+.character-sheet{
+  margin-top:3.5em;
+}

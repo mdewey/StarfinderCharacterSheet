@@ -177,6 +177,14 @@ function UpdateDLLink() {
         localStorage.setItem("SFSheetCrashRecovery", cstring);
 }
 
+function PopulateAbModFromScore(score, fallbackmod, prefmod, fieldclass) {
+    const _score = document.getElementById(score).value;
+    const mod = Math.floor((_score -10) /2);
+    console.log(mod);
+    document.getElementById(fallbackmod).value = mod;
+    PopulateAbMod(fallbackmod, prefmod, fieldclass);
+}
+
 function PopulateAbMod(fallbackmod, prefmod, fieldclass) {
     var modifier = document.getElementById(prefmod).value;
     if (modifier == "") {
@@ -190,12 +198,12 @@ function PopulateAbMod(fallbackmod, prefmod, fieldclass) {
 }
 
 function PopulateAll() {
-    PopulateAbMod('StrMod', 'StrUpMod', 'UseStrMod');
-    PopulateAbMod('DexMod', 'DexUpMod', 'UseDexMod');
-    PopulateAbMod('ConMod', 'ConUpMod', 'UseConMod');
-    PopulateAbMod('IntMod', 'IntUpMod', 'UseIntMod');
-    PopulateAbMod('WisMod', 'WisUpMod', 'UseWisMod');
-    PopulateAbMod('ChaMod', 'ChaUpMod', 'UseChaMod');
+    PopulateAbModFromScore('StrScore','StrMod', 'StrUpMod', 'UseStrMod');
+    PopulateAbModFromScore('DexScore','DexMod', 'DexUpMod', 'UseDexMod');
+    PopulateAbModFromScore('ConScore','ConMod', 'ConUpMod', 'UseConMod');
+    PopulateAbModFromScore('IntScore','IntMod', 'IntUpMod', 'UseIntMod');
+    PopulateAbModFromScore('WisScore','WisMod', 'WisUpMod', 'UseWisMod');
+    PopulateAbModFromScore('ChaScore','ChaMod', 'ChaUpMod', 'UseChaMod');
 }
 
 function CalculateCarry() {
