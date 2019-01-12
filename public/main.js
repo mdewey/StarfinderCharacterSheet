@@ -177,9 +177,11 @@ function UpdateDLLink() {
         localStorage.setItem("SFSheetCrashRecovery", cstring);
 }
 
+
+
 function PopulateAbModFromScore(score, fallbackmod, prefmod, fieldclass) {
     const _score = document.getElementById(score).value;
-    const mod = Math.floor((_score -10) /2);
+    const mod = Math.floor((_score - 10) / 2);
     console.log(mod);
     document.getElementById(fallbackmod).value = mod;
     PopulateAbMod(fallbackmod, prefmod, fieldclass);
@@ -198,12 +200,12 @@ function PopulateAbMod(fallbackmod, prefmod, fieldclass) {
 }
 
 function PopulateAll() {
-    PopulateAbModFromScore('StrScore','StrMod', 'StrUpMod', 'UseStrMod');
-    PopulateAbModFromScore('DexScore','DexMod', 'DexUpMod', 'UseDexMod');
-    PopulateAbModFromScore('ConScore','ConMod', 'ConUpMod', 'UseConMod');
-    PopulateAbModFromScore('IntScore','IntMod', 'IntUpMod', 'UseIntMod');
-    PopulateAbModFromScore('WisScore','WisMod', 'WisUpMod', 'UseWisMod');
-    PopulateAbModFromScore('ChaScore','ChaMod', 'ChaUpMod', 'UseChaMod');
+    PopulateAbModFromScore('StrScore', 'StrMod', 'StrUpMod', 'UseStrMod');
+    PopulateAbModFromScore('DexScore', 'DexMod', 'DexUpMod', 'UseDexMod');
+    PopulateAbModFromScore('ConScore', 'ConMod', 'ConUpMod', 'UseConMod');
+    PopulateAbModFromScore('IntScore', 'IntMod', 'IntUpMod', 'UseIntMod');
+    PopulateAbModFromScore('WisScore', 'WisMod', 'WisUpMod', 'UseWisMod');
+    PopulateAbModFromScore('ChaScore', 'ChaMod', 'ChaUpMod', 'UseChaMod');
 }
 
 function CalculateCarry() {
@@ -356,18 +358,38 @@ const loadCharactersFromLocalStorage = () => {
 
         })
     } else {
-        document.querySelector("#allcharacters").css("display", "none");
+        const _dropdown = document.querySelector("#allcharacters");
+        if (_dropdown && _dropdown.css) {
+            _dropdown.css("display", "none");
+        }
 
     }
 }
 
+const saveCharacterToLocalStorage = (json) => {
+    const jsonString = JSON.stringify(json);
+    localStorage.setItem(PC_KEY + "|" + json.Charname + "|" + json.Race, jsonString);
+
+}
+
+const saveCharacter = () => {
+    saveCharacterToLocalStorage();
+}
 
 const updateCharacterSheet = (e) => {
-    var key  = 	document.querySelector("#allcharacters").selectedOptions[0].value;
+    var key = document.querySelector("#allcharacters").selectedOptions[0].value;
     LoadJSON(localStorage.getItem(key));
-    
+
 }
 
 const addEvents = () => {
+    console.log("add evetms")
     document.querySelector("#allcharacters").onchange = updateCharacterSheet
+    document.querySelectorAll("input").forEach(input => {
+        input.onchange = () => {
+            console.log("save character");
+            UpdateDLLink();
+            saveCharacter();
+        }
+    })
 }
