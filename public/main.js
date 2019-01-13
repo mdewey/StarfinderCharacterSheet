@@ -132,34 +132,7 @@ function LoadFile() {
 }
 
 function UpdateDLLink() {
-    var cjson = {};
-    var charname = document.getElementById("Charname").value;
-    var charvars = document.querySelectorAll("input[type=text]");
-    var longvars = document.getElementsByTagName("textarea");
-    var boolvars = document.querySelectorAll("input[type=checkbox]");
-    var allowrecoverysave = false;
-
-    if (charname == "")
-        charname = "Unnamed Character";
-    else
-        allowrecoverysave = true;
-
-    for (var i = 0; i < charvars.length; i++) {
-        cjson[charvars[i].id] = charvars[i].value;
-    }
-
-    for (var i = 0; i < longvars.length; i++) {
-        cjson[longvars[i].id] = longvars[i].value;
-    }
-
-    for (var i = 0; i < boolvars.length; i++) {
-        if (boolvars[i].checked) {
-            cjson[boolvars[i].id] = true;
-        }
-    }
-
-    cjson['BackPack'] = document.getElementById("BackPack").value;
-
+    const cjson = getCharacterAsJson();
     var cstring = JSON.stringify(cjson);
     var charblob = new Blob([cstring], { type: "application/json" });
     var url = URL.createObjectURL(charblob);
@@ -167,14 +140,12 @@ function UpdateDLLink() {
     var button = document.createElement('button');
     button.textContent = "Save";
     button.onclick = () => {
-        localStorage.setItem(PC_KEY + "|" + cjson.Charname + "|" + cjson.Race, cstring)
+        saveCharacter();
     }
-
     document.getElementById('DownloadLink').innerHTML = ""
     document.getElementById('DownloadLink').appendChild(button);
 
-    if (allowrecoverysave)
-        localStorage.setItem("SFSheetCrashRecovery", cstring);
+    localStorage.setItem("SFSheetCrashRecovery", cstring);
 }
 
 
@@ -351,6 +322,11 @@ const loadCharactersFromLocalStorage = () => {
         return _el;
     })
     console.log(_options)
+    const select = document.querySelector("#allcharacters");
+    var length = select.options.length;
+    for (i = 1; i < length; i++) {
+        select.options[i] = null;
+    }
     if (_options.length > 0) {
         _options.forEach(_o => {
             console.log(document.querySelector("#allcharacters"))
@@ -368,12 +344,44 @@ const loadCharactersFromLocalStorage = () => {
 
 const saveCharacterToLocalStorage = (json) => {
     const jsonString = JSON.stringify(json);
-    localStorage.setItem(PC_KEY + "|" + json.Charname + "|" + json.Race, jsonString);
+    localStorage.setItem(PC_KEY + "|" + json.Charname, jsonString);
+}
 
+const getCharacterAsJson = () => {
+    var cjson = {};
+    var charname = document.getElementById("Charname").value;
+    var charvars = document.querySelectorAll("input[type=text]");
+    var longvars = document.getElementsByTagName("textarea");
+    var boolvars = document.querySelectorAll("input[type=checkbox]");
+    var allowrecoverysave = false;
+
+    if (charname == "")
+        charname = "Unnamed Character";
+    else
+        allowrecoverysave = true;
+
+    for (var i = 0; i < charvars.length; i++) {
+        cjson[charvars[i].id] = charvars[i].value;
+    }
+
+    for (var i = 0; i < longvars.length; i++) {
+        cjson[longvars[i].id] = longvars[i].value;
+    }
+
+    for (var i = 0; i < boolvars.length; i++) {
+        if (boolvars[i].checked) {
+            cjson[boolvars[i].id] = true;
+        }
+    }
+
+    cjson['BackPack'] = document.getElementById("BackPack").value;
+    return cjson;
 }
 
 const saveCharacter = () => {
-    saveCharacterToLocalStorage();
+    const cjson = getCharacterAsJson();
+    saveCharacterToLocalStorage(cjson);
+    loadCharactersFromLocalStorage();
 }
 
 const updateCharacterSheet = (e) => {
