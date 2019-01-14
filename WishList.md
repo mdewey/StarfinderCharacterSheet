@@ -5,3 +5,4 @@
 [ ] better format
 [ ] a framework
 [ ] save to an API
+[x] auto save
