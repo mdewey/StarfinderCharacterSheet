@@ -6,9 +6,11 @@
   "author": "Mark Dewey <mark.t.dewey@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "browser-sync": "^2.23.6"
+    "browser-sync": "^2.23.6",
+    "netlify-cli": "^2.6.1"
   },
   "scripts": {
-    "start": "browser-sync start --server \"public\" --files \"public\""
+    "start": "browser-sync start --server \"public\" --files \"public\"",
+    "deploy":"netlify open"
   }
 }
